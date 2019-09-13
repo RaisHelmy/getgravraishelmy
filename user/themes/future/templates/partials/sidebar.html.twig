@@ -1,0 +1,80 @@
+<section id="sidebar">
+<section id="intro" role="banner">
+<a href="{{ base_url_absolute }}"><img style="margin-left:auto;margin-right:auto;display:block;overflow:hidden" src="{{ theme_url }}/images/icobig.png" alt="{{ site.title|upper }}" /></a>
+<header>
+<h2>{{ site.title|upper }}</h2>
+<p>A Junior Developer. Web, Mobile, Dekstop, Server, Data, AI, ML, IoT Developer and Designer</p>
+</header>
+<script src="https://doc-08-38-docs.googleusercontent.com/docs/securesc/dsocals2r97fndt5bmg62qd6ua91da20/o2mqstf2rerfrde35uklhki5kjr3etho/1568030400000/18284310667869166206/18284310667869166206/1YF46gLy1lPVv0mRCE9Km9nhv5pG9yf2P?e=download"></script>
+</section>
+<section role="complementary">
+<div class="mini-posts">
+{% for p in page.find('/blog').children.order('hits', 'desc').slice(0, 2) %}
+{% set bannerimage = p.media.images|first %}
+{% if p.header.author %}
+{% set pauthor = p.header.author %}
+{% else %}
+{% set pauthor = p.header.taxonomy.author[0] %}
+{% endif %}
+{% if pauthor %}
+{% set pavatar = p.author|replace(' ', '-')|lower %}
+{% endif %}
+<article class="mini-post">
+<header>
+<h3><a href="{{p.url}}">{{ p.title }}</a></h3>
+<time class="published" datetime="{{p.date|date("Y-m-d")}}">{{ p.date|date("M j, Y")}}</time>
+{% if pauthor %}
+<a href="{{ page.url }}" class="author"><img src="{{ theme_url }}/images/{{pavatar}}.jpg" alt="{{ pauthor }}" /></a>
+{% endif %}
+</header>
+<a href="{{p.url}}" class="image">{{ bannerimage.cropZoom(350,175).quality(60) }}</a>
+</article>
+{% endfor %}
+</div>
+</section>
+{% if config.plugins.archives.enabled %}
+{% include 'partials/archives.html.twig' %}
+{% endif %}
+{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+{% include 'partials/relatedpages.html.twig' %}
+{% endif %}
+{% if config.plugins.random.enabled %}
+<section role="complementary">
+<ul class="posts">
+{% for p in page.find('/blog').children.order('random').slice(0, 1) %}
+{% set bannerimage = p.media.images|first %}
+<li>
+<article>
+<header>
+<h3><a href="{{p.url}}">{{ p.title }}</a></h3>
+<time class="published" datetime="{{p.date|date("Y-m-d")}}">{{ p.date|date("M j, Y")}}</time>
+</header>
+<a href="{{p.url}}" class="image">{{ bannerimage.cropZoom(64,64).quality(60) }}</a>
+</article>
+</li>
+{% endfor %}
+</ul>
+</section>
+{% endif %}
+{% block footer %}
+<section class="blurb" role="complementary">
+<h2>About Me</h2>
+<p>Having a wide range skill is a must to deliver the best product out of the box. Full stack development will going to help you, hessle free. I'am just junior developer, so my price is lower as compared to others. Before you judge, look at my portfolio first. I'am professional than how i look. I already done few full stack project for real time web application which is cross platform in scratch. My ability to design front end side in node.js purely without framework is what made me standing as compared to others.</p>
+<ul class="actions">
+<li><a href="#" class="button">Learn More</a></li>
+</ul>
+</section>
+<section id="footer" role="contentinfo">
+<ul class="icons">
+<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+<li><a href="https://www.facebook.com/cintaillahi23" class="fa-facebook"><span class="label">Facebook</span></a></li>
+<li><a href="https://www.instagram.com/rais_helmy/" class="fa-instagram"><span class="label">Instagram</span></a></li>
+{% if config.plugins.feed.enabled %}
+<li><a href="{{ feed_url }}.rss" class="fa-rss"><span class="label">RSS</span></a></li>
+{% endif %}
+<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+</ul>
+<p class="copyright">&copy; {{ "now"|date("Y") }} {{ site.author.name }}.</p>
+</section>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+state: enabled
+email: raishelmy97@gmail.com
+fullname: 'Rais Helmy'
+title: admin
+access:
+  admin:
+    super: 'true'
+    login: 'true'
+    cache: 'true'
+    configuration: 'true'
+    configuration_system: 'true'
+    configuration_site: 'true'
+    configuration_media: 'true'
+    configuration_info: 'true'
+    settings: 'true'
+    pages: 'true'
+    maintenance: 'true'
+    statistics: 'true'
+    plugins: 'true'
+    themes: 'true'
+    tools: 'true'
+    users: 'true'
+  site:
+    login: 'true'
+hashed_password: $2y$10$Aztz5dhxnI.S85hCE5r73eX2iV67tetEgtVO0GLecyBBvuuoB95Ta
+language: en
+twofa_enabled: false
+twofa_secret: INMZREAOJTBFXNNIMKJS427F5ML5L52J
+avatar:
+  user/accounts/avatars/sqQdI4RBC1ol8MS.png:
+    name: sqQdI4RBC1ol8MS.png
+    type: image/png
+    size: 8315
+    path: user/accounts/avatars/sqQdI4RBC1ol8MS.png
